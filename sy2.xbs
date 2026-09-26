@@ -1,0 +1,70 @@
+[
+  {
+    "title": "新笔趣阁",
+    "host": "https://www.xbqg777.com",
+    "httpUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+    "enable": 1,
+    "weight": 1,
+    "search": {
+      "url": "https://www.xbqg777.com/search?keyword=%@&page=%@",
+      "list": "//div[contains(@class, 'card')]",
+      "name": ".//div[contains(@class, 'title')]/text() || .//a/@title",
+      "author": ".//div[contains(@class, 'author')]/text()",
+      "cover": ".//img/@src",
+      "intro": ".//div[contains(@class, 'des')]/text()",
+      "detail": ".//a/@href"
+    },
+    "detail": {
+      "name": "//meta[@property='og:novel:book_name']/@content || //div[contains(@class, 'title')]/text()",
+      "author": "//meta[@property='og:novel:author']/@content || //div[contains(@class, 'zuthor')]/text() -|作者：",
+      "cover": "//div[contains(@class, 'cover')]//img/@src",
+      "intro": "//meta[@property='og:description']/@content || //div[contains(@class, 'des')]//div[contains(@class, 'text')]/text() -|最新章节由网友提供.*",
+      "kind": "//meta[@property='og:novel:category']/@content",
+      "lastChapter": "//meta[@property='og:novel:latest_chapter_name']/@content || //div[contains(@class, 'upcont')]//a/text()",
+      "catalogUrl": "//div[contains(@class, 'crumb')]//a[last()]/@href || //meta[@property='og:novel:read_url']/@content"
+    },
+    "catalog": {
+      "list": "//div[contains(@class, 'chapter')]//ol//li//a",
+      "name": ".//text()",
+      "chapter": "./@href"
+    },
+    "content": {
+      "text": "//div[@id='article']/text()",
+      "purge": "<p[^>]+class=[\"']readinline[\"'][\\s\\S]*?<\\/p>|<!--over-->"
+    }
+  },
+  {
+    "title": "笔趣阁 (bixiange)",
+    "host": "https://www.bixiange.top",
+    "httpUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15",
+    "enable": 1,
+    "weight": 1,
+    "search": {
+      "url": "https://www.bixiange.top/e/search/indexpage.php",
+      "method": "POST",
+      "charset": "GB2312",
+      "body": "keyboard=%@&show=title&classid=0",
+      "list": "//ul[contains(@class, 'clearfix')]/li",
+      "name": ".//img/@alt || .//strong/a/text()",
+      "cover": ".//img/@src",
+      "intro": ".//div[contains(@class, 'descript')]//a/text()",
+      "detail": ".//div[contains(@class, 'cover')]//a/@href || .//strong/a/@href"
+    },
+    "detail": {
+      "name": "//div[contains(@class, 'info-right')]/h1/text()",
+      "author": "//div[contains(@class, 'descTip')]/p[2]/span/text() -|作者：",
+      "cover": "//div[contains(@class, 'info-left')]//img[1]/@src",
+      "intro": "//div[contains(@class, 'descInfo')]/p[1]/text()",
+      "lastChapter": "//ul[contains(@class, 'catalog')]//li[last()]//a/text()",
+      "catalogUrl": "@header"
+    },
+    "catalog": {
+      "list": "//ul[contains(@class, 'clearfix')]/li/a",
+      "name": ".//text()",
+      "chapter": "./@href"
+    },
+    "content": {
+      "text": "//div[contains(@class, 'content')]/text()"
+    }
+  }
+]
